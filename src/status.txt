@@ -1,0 +1,218 @@
+
+.filter((equalValue)=>{
+              return equalValue.name===this.state.changeMe
+            })
+
+
+
+
+//className Validation
+className={this.state.clickedMe===jsonValue.name?"text-success pointer h6":
+                      "text-primary pointer"}
+
+
+
+<div className="container text-dark border">
+                    <div className="row">
+                      <div className="col">
+                        <span onClick={()=>this.clickMe(jsonValue.name)} 
+                          className={this.state.clickedMe.includes(jsonValue.name)? 
+                          "text-success pointer h6":"text-primary pointer"}>
+                          <b>{jsonValue.name}</b>
+                        </span> 
+                      </div>
+                      <div className="col">
+                        <b>{jsonValue.code}</b>
+                      </div>
+                    </div>
+                  </div>
+
+
+////
+                  myjson.filter((equalValue)=>{
+                return equalValue.name.toLowerCase()
+                .includes(this.state.changeMe.toLowerCase()) 
+              }).map((jsonValue)=>{
+                console.log("jsonvalue",jsonValue);
+                return(
+                <div>
+                  <div className="container text-dark border">
+                    <div className="row">
+                      <div className="col">
+                        <span className="text-primary pointer" >
+                          <b>{this.state.clickedMe}{jsonValue.name}</b>
+                        </span> 
+                      </div>
+                      <div className="col">
+                        <b>{jsonValue.code}</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                )
+              })
+
+
+
+
+//
+this.state.clickedMe.splice(this.state.clickedMe.indexOf(jsonValue),1)
+        this.setState({
+          clickedMe:this.state.clickedMe
+        })
+
+
+
+CountryCode
+
+      countryCode:[...this.state.countryCode,code]
+
+
+//refered url
+
+https://melvingeorge.me/blog/remove-elements-contained-in-another-array-javascript
+
+
+
+
+var a = [1,2,3,4,5];
+var b = [3,4,5];
+
+a = a.filter(x => b.indexOf(x) == -1);
+
+
+
+
+
+//   <div>
+            //     {this.state.clickedMe.map((item)=>{
+            //       return(
+            //         <div className="container text-dark border">
+            //         <div className="row">
+            //           <div className="col">
+            //             <span>
+            //               <b className="text-success pointer h6">{item}</b>
+            //             </span> 
+            //           </div>
+            //         </div>
+            //       </div>
+            //       )})
+            //     }
+            //     {/* {this.state.valueChange.map((jsonValue)=>{
+            //         return(
+            //           <div>
+            //             <div className="container text-dark border">
+            //               <div className="row">
+            //                 <div className="col">
+            //                   <span className="text-primary pointer" >
+            //                     <b>{jsonValue.name}</b>
+            //                   </span> 
+            //                 </div>
+            //                 <div className="col">
+            //                   <b>{jsonValue.code}</b>
+            //                 </div>
+            //               </div>
+            //             </div>
+            //           </div>
+            //         )
+            //       })
+            //     } */}
+            // </div>
+
+
+
+
+import React,{Component} from "react";
+import myjson from './json'
+import './App.css'
+
+class myApp extends Component{
+  
+  state={
+    clickedMe:[],
+    changeMe:"",
+    valueChange:myjson
+  }
+  clickMe=(jsonValue)=>{
+    if(this.state.clickedMe.includes(jsonValue)){
+      const originalData = this.state.clickedMe.filter(item => item !== jsonValue);
+      this.setState({
+        clickedMe:originalData
+      })
+        // this.state.clickedMe.splice(this.state.clickedMe.indexOf(jsonValue),1)
+        // this.setState({
+        //   clickedMe:this.state.clickedMe,
+        // })
+    }
+    else{
+      this.setState({
+      clickedMe:[...this.state.clickedMe,jsonValue],
+      })
+    }
+  }
+
+  
+  showValue=(e)=>{
+    const changeValue=myjson.filter((equalValue)=>{
+      return (equalValue.name.toLowerCase()
+      .includes(this.state.changeMe.toLowerCase())) 
+    })
+    this.setState({
+      changeMe:e.target.value,
+      valueChange:changeValue
+    })
+  }
+   render(){
+    return(
+         <div>
+            <div className="margin-left mt-3 mb-5" >
+              <label htmlFor="Search" className="h5 mr-4">Search your Country : </label>
+              <input type="text" value={this.state.changeMe} onChange={this.showValue}/>
+            </div>
+            <div className="container" >
+              <div className="row border bg-dark text-white">
+                <div className="col">
+                  <b className="h3">Country Name</b> 
+                </div>
+                <div className="col">
+                  <b className="h3">Country Code </b>
+                </div>
+              </div>
+            </div>
+            {
+             this.state.valueChange.map((jsonValue)=>{
+                return(
+                <div >
+                  <div className="container text-dark border">
+                    <div className="row">
+                      <div className="col">
+                        <span onClick={()=>this.clickMe(jsonValue.name,jsonValue.code)} 
+                          className={this.state.clickedMe.includes(jsonValue.name)? 
+                          "text-success pointer h6":"text-primary pointer"}>
+                          <b>{jsonValue.name}</b>
+                        </span> 
+                      </div>
+                      <div className="col">
+                        <b>{jsonValue.code}</b>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                )
+              })
+            }
+         </div>
+      )
+   }
+}
+
+export default myApp
+
+
+
+
+
+
+
+
+
