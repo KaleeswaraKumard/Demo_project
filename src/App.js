@@ -53,7 +53,7 @@ class myApp extends Component{
     return(
          <div>
             <div className="margin-left mt-3 mb-5" >
-              <label htmlFor="Search" className="h5 mr-4">Search your Country : </label>
+              <label htmlFor="Search" className="h5 mr-4">Search Country : </label>
               <input type="text" value={this.state.changeMe} onChange={this.showValue}/>
             </div>
             <div className="container" >
