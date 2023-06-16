@@ -55,7 +55,7 @@ class myApp extends Component {
           Click Me
         </button>
         <button>
-            New button
+            Second button
         </button>
         <div className="margin-left mt-3 mb-5" >
           <label htmlFor="Search" className="h5 mr-4">Search Country : </label>
