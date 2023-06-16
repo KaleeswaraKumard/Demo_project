@@ -16,3 +16,5 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: My first Yaml steps
+        run: echo "Steps are included here"

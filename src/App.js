@@ -51,7 +51,9 @@ class myApp extends Component {
   render() {
     return (
       <div>
-        <button onClick={() => console.log("clicked Me")}>Click Me</button>
+        <button style={{ color: "red", background: "black", border: "2px solid blue" }} onClick={() => console.log("clicked Me")}>
+          Click Me
+        </button>
         <div className="margin-left mt-3 mb-5" >
           <label htmlFor="Search" className="h5 mr-4">Search Country : </label>
           <input type="text" value={this.state.changeMe} onChange={this.showValue} />
